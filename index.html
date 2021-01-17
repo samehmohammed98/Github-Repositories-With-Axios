@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Vue Calculate Product</title>
+</head>
+<body>
+  <div id="vue-test" class="container">
+
+    <input type="text" v-model='username'>
+    <button @click.prevent="getRepos"> Get Repo </button>
+    <div v-for='repo in repos'>
+      <h3> {{ repo.name }} </h3>
+    </div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#vue-test',
+      data: {
+        username: null,
+        repos: null
+      },
+      methods: {
+        getRepos: function() {
+          /*
+            [1] Get Data From API
+            [2] Return The Reponse
+            [3] Catch Error
+          */
+          return axios.get("https://api.github.com/users/" + this.username + "/repos").then(response => {
+            this.repos = response.data;
+          }).catch(error => {
+            console.log(error);
+          })
+        }
+      }
+    });
+  </script>
+</body>
+</html>

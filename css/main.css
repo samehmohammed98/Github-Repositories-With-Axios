@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+}
+.container {
+  text-align: center;
+  margin: 40px auto;
+}
+.container input {
+  padding: 10px 20px;
+  font-size: 22px;
+  outline: none;
+}
+.container button {
+  padding: 10px 20px;
+  font-size: 22px;
+  outline: none;
+  background-color: deepskyblue;
+  cursor: pointer;
+}
